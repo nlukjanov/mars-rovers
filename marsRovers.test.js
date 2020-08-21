@@ -10,7 +10,11 @@ describe('Testing Mars Rovers exploration', () => {
   };
 
   test('should have a function', () => {
-    expect(marsExploration).toBeTruthy();
+    expect(typeof marsExploration).toBe('function');
+  });
+
+  test('should return an object', () => {
+    expect(typeof marsExploration(input)).toBe('object');
   });
 
   test('should return correct calculation for rovers', () => {
