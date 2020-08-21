@@ -1,21 +1,13 @@
 const { marsExploration, roverMove, calculatePath } = require('./marsRovers');
 
-describe('Testing Mars Rovers exploration', () => {
-  const input = {
-    grid: { x: 5, y: 5 },
-    rover1Location: { x: 1, y: 2, d: 'N' },
-    rover1Instruction: 'LMLMLMLMM',
-    rover2Location: { x: 3, y: 3, d: 'E' },
-    rover2Instruction: 'MMRMMRMRRM'
-  };
+const fs = require('fs');
 
-  const anotherInput = {
-    grid: { x: 5, y: 5 },
-    rover1Location: { x: 4, y: 4, d: 'S' },
-    rover1Instruction: 'MMMRMRMLMLM',
-    rover2Location: { x: 1, y: 1, d: 'E' },
-    rover2Instruction: 'MLMRMLMLMMRMRMM'
-  };
+const textInput1 = fs.readFileSync('input.txt', 'utf-8').split(/\r?\n/);
+const textInput2 = fs.readFileSync('input2.txt', 'utf-8').split(/\r?\n/);
+
+describe('Testing Mars Rovers exploration', () => {
+  const input = textInput1;
+  const anotherInput = textInput2;
 
   test('should have a function', () => {
     expect(typeof marsExploration).toBe('function');
