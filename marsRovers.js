@@ -42,16 +42,38 @@ const calculatePath = (roverData, roverInstruction) => {
   return roverLocation;
 };
 
+const convertInputIntoObject = (textInput) => {
+  const gridArray = textInput[0].split(' ');
+  const rover1LocationArray = textInput[1].split(' ');
+  const rover1InstructionArray = textInput[2].split('');
+  const rover2LocationArray = textInput[3].split(' ');
+  const rover2InstructionArray = textInput[4].split('');
+
+  return {
+    grid: { x: gridArray[0], y: gridArray[1] },
+    rover1Location: {
+      x: Number(rover1LocationArray[0]),
+      y: Number(rover1LocationArray[1]),
+      d: rover1LocationArray[2]
+    },
+    rover1InstructionArray,
+    rover2Location: {
+      x: Number(rover2LocationArray[0]),
+      y: Number(rover2LocationArray[1]),
+      d: rover2LocationArray[2]
+    },
+    rover2InstructionArray
+  };
+};
+
 const marsExploration = (input) => {
+  const inputFromText = convertInputIntoObject(input);
   const {
     rover1Location,
-    rover1Instruction,
+    rover1InstructionArray,
     rover2Location,
-    rover2Instruction
-  } = input;
-
-  const rover1InstructionArray = rover1Instruction.split('');
-  const rover2InstructionArray = rover2Instruction.split('');
+    rover2InstructionArray
+  } = inputFromText;
 
   const rover1FinalLocation = calculatePath(
     rover1Location,
