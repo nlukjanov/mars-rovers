@@ -37,7 +37,7 @@ const marsExploration = (input) => {
   const rover2InstructionArray = rover2Instruction.split('');
 
   const calculatePath = (roverData, roverInstruction) => {
-    let roverLocation = roverData;
+    let roverLocation = { ...roverData };
     for (let index = 0; index < roverInstruction.length; index++) {
       const element = roverInstruction[index];
       if (element === 'L') {
