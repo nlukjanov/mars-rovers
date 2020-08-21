@@ -5,7 +5,7 @@ describe('Testing Mars Rovers exploration', () => {
     expect(exploration).toBeTruthy();
   });
 
-  test('should return an object', () => {
-    expect(exploration()).toStrictEqual({});
+  test('should return an object with 2 Rovers', () => {
+    expect(exploration()).toEqual({ rover1: {}, rover2: {} });
   });
 });
