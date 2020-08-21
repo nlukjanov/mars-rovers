@@ -27,7 +27,7 @@ const roverRightRotation = {
   W: 'N'
 };
 
-const calculatePath = (roverData, roverInstruction) => {
+const calculateFinalLocation = (roverData, roverInstruction) => {
   let roverLocation = { ...roverData };
   for (let index = 0; index < roverInstruction.length; index++) {
     const element = roverInstruction[index].toUpperCase();
@@ -67,20 +67,19 @@ const convertInputIntoObject = (textInput) => {
 };
 
 const marsExploration = (input) => {
-  const inputFromText = convertInputIntoObject(input);
   const {
     rover1Location,
     rover1InstructionArray,
     rover2Location,
     rover2InstructionArray
-  } = inputFromText;
+  } = convertInputIntoObject(input);
 
-  const rover1FinalLocation = calculatePath(
+  const rover1FinalLocation = calculateFinalLocation(
     rover1Location,
     rover1InstructionArray
   );
 
-  const rover2FinalLocation = calculatePath(
+  const rover2FinalLocation = calculateFinalLocation(
     rover2Location,
     rover2InstructionArray
   );
@@ -88,4 +87,4 @@ const marsExploration = (input) => {
   return { rover1: rover1FinalLocation, rover2: rover2FinalLocation };
 };
 
-module.exports = { marsExploration, roverMove, calculatePath };
+module.exports = { marsExploration, roverMove, calculateFinalLocation };

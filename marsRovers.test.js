@@ -1,4 +1,4 @@
-const { marsExploration, roverMove, calculatePath } = require('./marsRovers');
+const { marsExploration, roverMove, calculateFinalLocation } = require('./marsRovers');
 
 const fs = require('fs');
 
@@ -32,7 +32,7 @@ describe('Testing Mars Rovers exploration', () => {
   test('calculate path should correctly calculate path', () => {
     const roverLocation = { x: 2, y: 2, d: 'N' };
     const roverInstructionArray = ['M', 'L', 'M', 'R', 'M', 'R', 'M', 'M', 'M'];
-    expect(calculatePath(roverLocation, roverInstructionArray)).toStrictEqual({
+    expect(calculateFinalLocation(roverLocation, roverInstructionArray)).toStrictEqual({
       x: 4,
       y: 4,
       d: 'E'
