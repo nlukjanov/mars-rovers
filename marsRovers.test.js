@@ -1,4 +1,4 @@
-const marsExploration = require('./marsRovers');
+const { marsExploration, roverMove, calculatePath } = require('./marsRovers');
 
 describe('Testing Mars Rovers exploration', () => {
   const input = {
@@ -15,6 +15,18 @@ describe('Testing Mars Rovers exploration', () => {
 
   test('should return an object', () => {
     expect(typeof marsExploration(input)).toBe('object');
+  });
+
+  test('roverMove return an object', () => {
+    const roverLocation = { x: 1, y: 2, d: 'N' };
+    expect(typeof roverMove(roverLocation)).toBe('object');
+  });
+
+  test('roverMove should correctly ', () => {
+    const roverLocation = { x: 1, y: 2, d: 'N' };
+    expect(roverMove(roverLocation)).toMatchObject({ x: 1, y: 3, d: 'N' });
+    const roverLocation2 = { x: 1, y: 2, d: 'S' };
+    expect(roverMove(roverLocation2)).toMatchObject({ x: 1, y: 1, d: 'S' });
   });
 
   test('should return correct calculation for rovers', () => {
