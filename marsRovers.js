@@ -1,11 +1,13 @@
 const roverMove = (roverLocation) => {
-  if (roverLocation.d === 'N') {
+  const roverDirection = roverLocation.d.toUpperCase();
+
+  if (roverDirection === 'N') {
     roverLocation.y += 1;
-  } else if (roverLocation.d === 'E') {
+  } else if (roverDirection === 'E') {
     roverLocation.x += 1;
-  } else if (roverLocation.d === 'S') {
+  } else if (roverDirection === 'S') {
     roverLocation.y -= 1;
-  } else if (roverLocation.d === 'W') {
+  } else if (roverDirection === 'W') {
     roverLocation.x -= 1;
   }
   return roverLocation;
@@ -28,7 +30,7 @@ const roverRightRotation = {
 const calculatePath = (roverData, roverInstruction) => {
   let roverLocation = { ...roverData };
   for (let index = 0; index < roverInstruction.length; index++) {
-    const element = roverInstruction[index];
+    const element = roverInstruction[index].toUpperCase();
     if (element === 'L') {
       roverLocation.d = roverLeftRotation[roverLocation.d];
     } else if (element === 'R') {
