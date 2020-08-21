@@ -1,0 +1,15 @@
+{
+  "name": "mars-rovers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "marsRovers.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.4.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nikita Lukjanov",
+  "license": "ISC"
+}
