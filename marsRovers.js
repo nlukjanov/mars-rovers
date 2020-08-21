@@ -20,11 +20,24 @@ const marsExploration = (input) => {
     W: 'N'
   };
 
+  const roverMove = (roverLocation) => {
+    if (roverLocation.d === 'N') {
+      roverLocation.y += 1;
+    } else if (roverLocation.d === 'E') {
+      roverLocation.x += 1;
+    } else if (roverLocation.d === 'S') {
+      roverLocation.y -= 1;
+    } else if (roverLocation.d === 'W') {
+      roverLocation.x -= 1;
+    }
+    return roverLocation;
+  };
+
   const rover1InstructionArray = rover1Instruction.split('');
   const rover2InstructionArray = rover2Instruction.split('');
 
   const calculatePath = (roverData, roverInstruction) => {
-    const roverLocation = roverData;
+    let roverLocation = roverData;
     for (let index = 0; index < roverInstruction.length; index++) {
       const element = roverInstruction[index];
       if (element === 'L') {
@@ -32,15 +45,7 @@ const marsExploration = (input) => {
       } else if (element === 'R') {
         roverLocation.d = roverRightRotation[roverLocation.d];
       } else if (element === 'M') {
-        if (roverLocation.d === 'N') {
-          roverLocation.y += 1;
-        } else if (roverLocation.d === 'E') {
-          roverLocation.x += 1;
-        } else if (roverLocation.d === 'S') {
-          roverLocation.y -= 1;
-        } else if (roverLocation.d === 'W') {
-          roverLocation.x -= 1;
-        }
+        roverLocation = roverMove(roverLocation);
       }
     }
     return roverLocation;
